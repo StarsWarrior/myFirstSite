@@ -1,84 +1,81 @@
 // https://github.com/StarsWarrior/shopping-cart
 
-const iphoneMinusBtn = document.querySelector('.iphone-minus');
-const iphonePlusBtn = document.querySelector('.iphone-plus');
-const coverMinusBtn = document.querySelector('.cover-minus');
-const coverPlusBtn = document.querySelector('.cover-plus')
-const removeIphone = document.querySelector('.iphoneItem');
-const removeCover = document.querySelector('.coverItem');
+const phoneMinusBtn = document.querySelector('.phone-minus');
+const phonePlusBtn = document.querySelector('.phone-plus');
+const caseMinusBtn = document.querySelector('.case-minus');
+const casePlusBtn = document.querySelector('.case-plus');
+const removePhone = document.getElementById('phoneItem');
+const removeCase = document.getElementById('caseItem');
 
-// Iphone Item Amount Increase 
-iphonePlusBtn.addEventListener('click', function () {
-    let iphoneCount = Number(document.querySelector('.iphone-count').value);
-    iphoneCount++;
+//Phone Amount Increment
+phonePlusBtn.addEventListener('click', function () {
+    let phoneItemCount = Number(document.querySelector('.phoneItemCount').value);
+    phoneItemCount++;
 
-    document.querySelector('.iphone-count').value = iphoneCount;
+    document.querySelector('.phoneItemCount').value = phoneItemCount;
 
-    let iphonePrice = (document.querySelector('.iphone-price').textContent = iphoneCount * 1219);
+    let phonePrice = (document.querySelector('.phone-price').textContent = phoneItemCount * 1219);
     totalPrice();
-})
+});
 
-// I-phone Item Amount Decrease 
-iphoneMinusBtn.addEventListener('click', function () {
-    let iphoneCount = Number(document.querySelector('iphone-count').value);
-    iphoneCount--;
-    if (iphoneCount < 0) {
-        iphoneCount = 0;
+// Phone Amount Decrement
+phoneMinusBtn.addEventListener('click', function () {
+    let phoneItemCount = Number(document.querySelector('.phoneItemCount').value);
+    phoneItemCount--;
+    if (phoneItemCount < 0) {
+        phoneItemCount = 0;
     }
-    document.querySelector('.iphone-count').value = iphoneCount;
+    document.querySelector('.phoneItemCount').value = phoneItemCount;
 
-    let iphonePrice = (document.querySelector('.iphone-price').textContent = iphoneCount * 1219);
+    let phonePrice = (document.querySelector('.phone-price').textContent = phoneItemCount * 1219);
     totalPrice();
 });
 
+// Case Item Increment
+casePlusBtn.addEventListener('click', function () {
+    let caseItemCount = Number(document.querySelector('.caseItemCount').value);
+    caseItemCount++;
 
+    document.querySelector('.caseItemCount').value = caseItemCount;
 
-// Cover Item Increase
-
-coverMinusBtn.addEventListener('click', function () {
-    let coverCount = Number(document.querySelector('.cover-count').value);
-    coverCount++;
-
-    document.querySelector('.coverCount').value = coverCount;
-
-    let coverPrice = Number(document.querySelector('.cover-price').textContent = coverCount * 59);
+    let casePrice = (document.querySelector('.case-price').textContent = caseItemCount * 59);
     totalPrice();
 });
 
-// Cover Item Increment
-coverMinusBtn.addEventListener('click', function () {
-    let coverCount = Number(document.querySelector('.coverCount').value);
+// Case Item Increment
+caseMinusBtn.addEventListener('click', function () {
+    let caseItemCount = Number(document.querySelector('.caseItemCount').value);
     caseItemCount--;
-    if (coverCount < 0) {
-        coverCount = 0;
+    if (caseItemCount < 0) {
+        caseItemCount = 0;
     }
-    document.querySelector('.coverCount').value = coverCount;
+    document.querySelector('.caseItemCount').value = caseItemCount;
 
-    let coverPrice = (document.querySelector('.cover-price').textContent = coverCount * 59);
+    let casePrice = (document.querySelector('.case-price').textContent = caseItemCount * 59);
     totalPrice();
 });
 
-// Remove Cover Item From Cart
-document.getElementById('removeIphoneBtn').addEventListener('click', function () {
-    document.querySelector('.iphoneCount').value = 0;
-    document.querySelector('.iphone-price').innerText = 0;
-    removeIphone.style.display = 'none';
+// Remove Case Item From Cart
+document.getElementById('removePhoneBtn').addEventListener('click', function () {
+    document.querySelector('.phoneItemCount').value = 0;
+    document.querySelector('.phone-price').innerText = 0;
+    removePhone.style.display = 'none';
     totalPrice();
 });
 
-// Remove Cover Item From Cart
-document.getElementById('removeCoverBtn').addEventListener('click', function () {
-    document.querySelector('.coverCount').value = 0;
-    document.querySelector('.cover-price').innerText = 0;
-    removeCover.style.display = 'none';
+// Remove Case Item From Cart
+document.getElementById('removeCaseBtn').addEventListener('click', function () {
+    document.querySelector('.caseItemCount').value = 0;
+    document.querySelector('.case-price').innerText = 0;
+    removeCase.style.display = 'none';
     totalPrice();
 });
 
 //Total Price Count
 function totalPrice() {
-    let iphonePrice = Number(document.querySelector('.iphone-price').textContent);
-    let coverPrice = Number(document.querySelector('.cover-price').textContent);
-    let subtotal = (document.querySelector('.subtotal').textContent = iphonePrice + coverPrice);
+    let phonePrice = Number(document.querySelector('.phone-price').textContent);
+    let casePrice = Number(document.querySelector('.case-price').textContent);
+    let subtotal = (document.querySelector('.subtotal').textContent = phonePrice + casePrice);
     let vat = Number(document.querySelector('.vat').textContent);
     let total = (document.querySelector('.total').textContent = subtotal + vat);
 }
